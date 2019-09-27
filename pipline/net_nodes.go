@@ -11,7 +11,7 @@ func NetWorkSink(addr string, in <-chan int) {
 		panic(e)
 	}
 	go func() {
-		listener.Close()
+		defer listener.Close()
 		conn, e := listener.Accept()
 		if e != nil {
 			panic(e)
